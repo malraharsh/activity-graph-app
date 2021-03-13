@@ -20,6 +20,6 @@ l = f"(https://activity-graph.herokuapp.com/graph?username=ashutosh00710&bg_colo
 link = f"[![Ashutosh's github activity graph]{l}"
 # print(link) 
 
-st.markdown(link)
-
+# st.markdown(link)
+st.text(bg_color + ' ' + color)
 st.text_area('Copy This Link', value=link)
