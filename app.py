@@ -3,7 +3,7 @@ import streamlit as st
 st.title("Activity's Graph")
 
 st.sidebar.subheader('Choose color')
-bg_color = st.sidebar.color_picker('bg_color')
+bg_color = st.sidebar.color_picker('bg_color', value='#00f900', key=3)
 color = st.sidebar.color_picker('color')
 line = st.sidebar.color_picker('line')
 point = st.sidebar.color_picker('point')
