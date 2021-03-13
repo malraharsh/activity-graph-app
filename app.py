@@ -4,9 +4,9 @@ from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
 
 
-def color_picker():
+def color_picker(text):
     selected_color = "#ff4466" 
-    color_picker = ColorPicker(color=selected_color, title="Choose color:", width=200)
+    color_picker = ColorPicker(color=selected_color, title=f"Choose {text}:", width=200)
     color_picker.js_on_change("color", CustomJS(code="""
         document.dispatchEvent(new CustomEvent("COLOR_PICKED", {detail: {pickedColor: cb_obj.color}}))
         """))
@@ -17,7 +17,6 @@ def color_picker():
         refresh_on_update=False,
         override_height=75,
         debounce_time=0)
-
     if result:
         if "COLOR_PICKED" in result:
             selected_color = result.get("COLOR_PICKED")["pickedColor"]
@@ -28,17 +27,16 @@ st.title("Activity's Graph")
 
 st.sidebar.subheader('Choose color')
 
+# bg_color = st.sidebar.color_picker('bg_color', value='#00f900', key=3)
+# color = st.sidebar.color_picker('color')
+# line = st.sidebar.color_picker('line')
+# point = st.sidebar.color_picker('point')
 
+bg_color = color_picker('bg_color')
+color = color_picker('color')
+line = color_picker('line')
+point = color_picker('point')
 
-
-bg_color = st.sidebar.color_picker('bg_color', value='#00f900', key=3)
-color = st.sidebar.color_picker('color')
-line = st.sidebar.color_picker('line')
-point = st.sidebar.color_picker('point')
-
-colors = ['#77C957', '#1C1C9A', '#E035B3']
-bg_color = color_picker()
-st.text(bg_color)
 bg_color = bg_color[1:]
 color = color[1:]
 line = line[1:]
