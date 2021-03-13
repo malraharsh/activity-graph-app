@@ -13,7 +13,7 @@ def color_picker(text):
     result = streamlit_bokeh_events(
         color_picker,
         events="COLOR_PICKED",
-        key="picker",
+        key=text,
         refresh_on_update=False,
         override_height=75,
         debounce_time=0)
